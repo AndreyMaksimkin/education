@@ -13,6 +13,13 @@ class TaskOneService {
     
     // Заменить текущий вариант создания последовательности, используя метод create. Последовательность эмитит сигнал с числом, затем завершается. Число рандомное, observable hot.
     static func generateRandom() -> Observable<Int> {
-        return Observable.just(1)
+        
+        return Observable<Int>.create({ observer in
+            observer.on(.next(3))
+            observer.onCompleted()
+            return Disposables.create()
+        })
+        
+        //return Observable.just(1)
     }
 }

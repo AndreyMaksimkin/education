@@ -15,6 +15,7 @@ class TaskSixViewController: UIViewController {
         super.viewDidLoad()
         
         // Выполнить подписку на последовательность (см. задание в Misc/TaskSix). В логи распечатать значение, переданное на вход методу, выполнив подписку на последовательность.
+        
     }
     
     let disposeBag = DisposeBag()

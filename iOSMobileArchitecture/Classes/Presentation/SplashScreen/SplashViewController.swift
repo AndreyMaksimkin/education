@@ -27,7 +27,7 @@ class SplashViewController: UIViewController {
 extension Reactive where Base: SplashViewController {
     var goToTaskScreen: Binder<Void> {
         return Binder(base) { base, _ in
-            let vc = TaskOneViewController() // Для проверки заданий менять на соответствующий VC
+            let vc = TaskSixViewController() // Для проверки заданий менять на соответствующий VC
             let nc = UINavigationController(rootViewController: vc)
             UIApplication.shared.keyWindow?.rootViewController = nc
         }

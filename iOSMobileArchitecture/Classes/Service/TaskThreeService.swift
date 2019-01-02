@@ -13,11 +13,23 @@ class TaskThreeService {
     
     // Заменить текущий вариант создания последовательности, используя метод create. Последовательность эмитит только ошибку.
     static func generateErrorByCreate() -> Observable<Int> {
-        return Observable.just(1)
+        
+        return Observable<Int>.create({ observer in
+            observer.onError(RxError.unknown)
+            observer.onCompleted()
+            return Disposables.create()
+        })
     }
     
     // Заменить текущий вариант создания последовательности, используя метод, который создает последовательность, завершающуюся ошибкой.
     static func generateError() -> Observable<Int> {
-        return Observable.just(1)
+        
+        return Observable<Int>.create({ observer in
+            observer.on(.next(1))
+            observer.on(.next(2))
+            observer.onError(RxError.unknown)
+            return Disposables.create()
+        })
+        
     }
 }

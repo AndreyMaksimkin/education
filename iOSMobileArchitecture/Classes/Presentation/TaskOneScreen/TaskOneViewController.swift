@@ -18,6 +18,10 @@ class TaskOneViewController: UIViewController {
         
         TaskOneService
             .generateRandom()
+            .subscribe { (e: Event<Int>) in
+                print(e)
+        }
+        .disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()

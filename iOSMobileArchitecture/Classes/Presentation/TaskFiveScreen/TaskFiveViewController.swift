@@ -18,11 +18,19 @@ class TaskFiveViewController: UIViewController {
         
         TaskFiveService
             .completedByCreate()
+            .subscribe { (e: Event<Void>) in
+                //print(e)
+            }
+            .disposed(by: disposeBag)
         
         // Реализовать подписку на последовательность, используя метод subscribe.
         
         TaskFiveService
             .completed()
+            .subscribe { (e: Event<Int>) in
+                print(e)
+            }
+            .disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()

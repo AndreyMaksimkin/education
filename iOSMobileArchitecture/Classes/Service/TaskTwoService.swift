@@ -13,12 +13,21 @@ class TaskTwoService {
     
     // Заменить текущий вариант создания последовательности, используя оператор create. Последовательность эмитит массивы, объявленные в классе TaskTwoService (arrayOne, arrayTwo, arrayThree) и не завершается.
     func generateByCreate() -> Observable<[String]> {
-        return Observable.just([])
+        //return Observable.just([])
+        
+        return Observable<[String]>.create({ observer in
+            observer.on(.next(self.arrayOne))
+            observer.on(.next(self.arrayTwo))
+            observer.on(.next(self.arrayThree))
+            return Disposables.create()
+        })
+        
+        
     }
     
     // Заменить текущий вариант создания последовательности, используя оператор of. оследовательность эмитит массивы, объявленные в классе TaskTwoService (arrayOne, arrayTwo, arrayThree).
     func generateByOf() -> Observable<[String]> {
-        return Observable.just([])
+        return Observable.of(arrayOne, arrayTwo, arrayThree)
     }
     
     private let arrayOne = ["1", "2", "3"]
