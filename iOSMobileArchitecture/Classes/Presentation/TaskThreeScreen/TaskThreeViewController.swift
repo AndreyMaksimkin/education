@@ -16,8 +16,11 @@ class TaskThreeViewController: UIViewController {
         
         // Реализовать подписку на последовательность, используя оператор subscribe. Реализовать только те замыкания сигналов, которые могут быть вызваны. Замыкания для сигналов, которые никогда не будут прокинуты текущей последовательностью, не должны быть реализованы.
         
+        //почитай, зачем нужен disposeBag
+        //xCode не зря делает warning Result of call to 'subscribe' is unused
         TaskThreeService
             .generateErrorByCreate()
+            //аналогичное замечание как и в п.1
             .subscribe { (e: Event<Int>) in
                 //print(e)
         }
@@ -26,6 +29,7 @@ class TaskThreeViewController: UIViewController {
         
         TaskThreeService
             .generateError()
+            //аналогичное замечание как и в п.1
             .subscribe { (e: Event<Int>) in
                 print(e)
         }

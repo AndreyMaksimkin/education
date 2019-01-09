@@ -20,6 +20,7 @@ class TaskTwoViewController: UIViewController {
         
         taskTwoService
             .generateByCreate()
+            //аналогичное замечание как и в п.1
             .subscribe { (e: Event<[String]>) in
                 //print(e)
             }

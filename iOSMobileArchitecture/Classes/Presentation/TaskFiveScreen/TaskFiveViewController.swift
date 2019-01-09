@@ -18,6 +18,7 @@ class TaskFiveViewController: UIViewController {
         
         TaskFiveService
             .completedByCreate()
+            //аналогичное замечание как и в п.1
             .subscribe { (e: Event<Void>) in
                 //print(e)
             }
@@ -27,6 +28,7 @@ class TaskFiveViewController: UIViewController {
         
         TaskFiveService
             .completed()
+            //аналогичное замечание как и в п.1
             .subscribe { (e: Event<Int>) in
                 print(e)
             }

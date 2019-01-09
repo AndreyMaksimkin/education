@@ -13,7 +13,7 @@ class TaskThreeService {
     
     // Заменить текущий вариант создания последовательности, используя метод create. Последовательность эмитит только ошибку.
     static func generateErrorByCreate() -> Observable<Int> {
-        
+        //будет ли вызван сигнал onCompleted?
         return Observable<Int>.create({ observer in
             observer.onError(RxError.unknown)
             observer.onCompleted()
@@ -25,6 +25,7 @@ class TaskThreeService {
     static func generateError() -> Observable<Int> {
         
         return Observable<Int>.create({ observer in
+            //onNext
             observer.on(.next(1))
             observer.on(.next(2))
             observer.onError(RxError.unknown)

@@ -18,6 +18,11 @@ class TaskOneViewController: UIViewController {
         
         TaskOneService
             .generateRandom()
+            //нужно явно реализовать замыкания сигналов, которые могут быть вызваны
+            //должно получиться что-то такое:
+            //.subscribe(onNext: { results in
+            //  print(results)
+            //}, onCompleted: ...)
             .subscribe { (e: Event<Int>) in
                 print(e)
         }

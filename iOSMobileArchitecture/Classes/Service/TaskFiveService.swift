@@ -24,6 +24,6 @@ class TaskFiveService {
     static func completed() -> Observable<Int> {
         return Observable.empty()
         
-        
+        //лишние отступы
     }
 }

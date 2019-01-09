@@ -18,6 +18,7 @@ class TaskFourViewController: UIViewController {
         
         TaskFourService
             .generate()
+            //аналогичное замечание как и в п.1
             .subscribe { (e: Event<Int>) in
                 print(e)
             }

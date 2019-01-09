@@ -16,6 +16,7 @@ class TaskTwoService {
         //return Observable.just([])
         
         return Observable<[String]>.create({ observer in
+            //onNext
             observer.on(.next(self.arrayOne))
             observer.on(.next(self.arrayTwo))
             observer.on(.next(self.arrayThree))
