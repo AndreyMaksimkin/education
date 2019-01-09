@@ -24,6 +24,7 @@ class TaskFourService {
             })
         } else {
             return Observable<Int>.create({ observer in
+                //все ошибки должны быть класса Problem
                 observer.onError(RxError.unknown)
                 observer.onCompleted()
                 return Disposables.create()
