@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		556FDFE621E09DFB007D10BE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556FDFE521E09DFB007D10BE /* DateExtension.swift */; };
 		9609993121998CAB006B6D62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9609993021998CAB006B6D62 /* AppDelegate.swift */; };
 		9609993821998CAD006B6D62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9609993721998CAD006B6D62 /* Assets.xcassets */; };
 		9609995321998FFE006B6D62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9609995221998FFE006B6D62 /* LaunchScreen.storyboard */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		1BD445283A84B68658D70CD8 /* Pods-iOSMobileArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSMobileArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSMobileArchitecture/Pods-iOSMobileArchitecture.release.xcconfig"; sourceTree = "<group>"; };
+		556FDFE521E09DFB007D10BE /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		71B18D5F34437D6E8EB47727 /* Pods-iOSMobileArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSMobileArchitecture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSMobileArchitecture/Pods-iOSMobileArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
 		9609992D21998CAB006B6D62 /* iOSMobileArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSMobileArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9609993021998CAB006B6D62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		556FDFE321E09C2C007D10BE /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				556FDFE421E09C2C007D10BE /* Reactive */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		556FDFE421E09C2C007D10BE /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+				556FDFE521E09DFB007D10BE /* DateExtension.swift */,
+			);
+			path = Reactive;
+			sourceTree = "<group>";
+		};
 		9609992421998CAB006B6D62 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +142,7 @@
 		9609994221998D5F006B6D62 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				96B0E73221A81D58001AD6FF /* Misc */,
+				556FDFE321E09C2C007D10BE /* Misc */,
 				96DD572921A57E5D00BA1102 /* Model */,
 				96DD571621A554D100BA1102 /* Service */,
 				9609994821998DDF006B6D62 /* Presentation */,
@@ -169,21 +187,6 @@
 				96DD571C21A5576B00BA1102 /* SplashScreen */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		96B0E73221A81D58001AD6FF /* Misc */ = {
-			isa = PBXGroup;
-			children = (
-				96B0E73321A81D5F001AD6FF /* Reactive */,
-			);
-			path = Misc;
-			sourceTree = "<group>";
-		};
-		96B0E73321A81D5F001AD6FF /* Reactive */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reactive;
 			sourceTree = "<group>";
 		};
 		96DD571621A554D100BA1102 /* Service */ = {
@@ -393,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96DD572E21A5955F00BA1102 /* TaskFourService.swift in Sources */,
+				556FDFE621E09DFB007D10BE /* DateExtension.swift in Sources */,
 				96DD573121A5958100BA1102 /* TaskFourViewController.swift in Sources */,
 				96DD572121A5703400BA1102 /* TaskTwoViewController.swift in Sources */,
 				96DD571B21A5574500BA1102 /* TaskOneViewController.swift in Sources */,
@@ -537,7 +541,10 @@
 				DEVELOPMENT_TEAM = UDD4QZUY96;
 				INFOPLIST_FILE = "$(SRCROOT)/iOSMobileArchitecture/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrey.iOSMobileArchitecture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -554,7 +561,10 @@
 				DEVELOPMENT_TEAM = UDD4QZUY96;
 				INFOPLIST_FILE = "$(SRCROOT)/iOSMobileArchitecture/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrey.iOSMobileArchitecture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

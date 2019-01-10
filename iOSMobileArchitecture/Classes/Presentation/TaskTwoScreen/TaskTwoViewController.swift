@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TaskTwoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Последовательность, созданная в TaskTwoService, биндить к созданному наблюдателю.
+        let textObservable: Observable<String> = TaskTwoService.generateFromTimer()
+        textObservable.bind(to: rx.customTitle)
+        .disposed(by: disposeBag)
+    }
+}
+
+private let disposeBag = DisposeBag()
+
+extension Reactive where Base: TaskTwoViewController {
+    
+    var customTitle: Binder<String?> {
+        return Binder(base) { base, text in
+            print(text)
+        }
     }
 }
 

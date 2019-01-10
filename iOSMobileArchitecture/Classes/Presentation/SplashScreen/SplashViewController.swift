@@ -17,7 +17,7 @@ class SplashViewController: UIViewController {
         Observable<Void>
             .just(Void())
             .delaySubscription(2, scheduler: MainScheduler.instance)
-            .bind(to: rx.goToTaskOneScreen) // Для проверки заданий менять на соответствующий экран
+            .bind(to: rx.goToTaskFiveScreen) // Для проверки заданий менять на соответствующий экран
             .disposed(by: disposeBag)
     }
     
@@ -43,7 +43,7 @@ extension Reactive where Base: SplashViewController {
     
     var goToTaskThreeScreen: Binder<Void> {
         return Binder(base) { base, _ in
-            let vc = UIStoryboard(name: "TaskThreeScreen", bundle: nil).instantiateViewController(withIdentifier: "TaskFreeViewController")
+            let vc = UIStoryboard(name: "TaskThreeScreen", bundle: nil).instantiateViewController(withIdentifier: "TaskThreeViewController")
             let nc = UINavigationController(rootViewController: vc)
             UIApplication.shared.keyWindow?.rootViewController = nc
         }

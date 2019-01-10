@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class TaskOneViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
@@ -15,5 +16,13 @@ class TaskOneViewController: UIViewController {
         super.viewDidLoad()
         
         // Значения, которые эмитит последовательность из TaskOneService, отображать на timerLabel. Использовать метод bind(to: ).
+        
+        let textObservable: Observable<String> = TaskOneService.generateFromTimer()
+        textObservable.bind(to: timerLabel.rx.text)
+
+        
     }
+    
+    private let disposeBag = DisposeBag()
+
 }
