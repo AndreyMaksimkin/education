@@ -17,7 +17,7 @@ class TaskOneService {
         return Observable<Int>.create({ observer in
             //заменить на onNext(3)
             //observer.on(.next(3)) - так уже не пишут
-            observer.on(.next(3))
+            observer.onNext(3)
             observer.onCompleted()
             return Disposables.create()
         })

@@ -26,7 +26,7 @@
 		96DD573621A5A2CB00BA1102 /* TaskFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DD573521A5A2CB00BA1102 /* TaskFiveViewController.swift */; };
 		96DD573921A5A36E00BA1102 /* TaskSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DD573821A5A36E00BA1102 /* TaskSix.swift */; };
 		96DD573C21A5A59E00BA1102 /* TaskSixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DD573B21A5A59E00BA1102 /* TaskSixViewController.swift */; };
-		F088DDEB8B0CC04BA3E6297D /* Pods_iOSMobileArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38784567A1F2064A21055F8 /* Pods_iOSMobileArchitecture.framework */; };
+		FD61C3097496CBD2B2C6BCD5 /* Pods_iOSMobileArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38784567A1F2064A21055F8 /* Pods_iOSMobileArchitecture.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F088DDEB8B0CC04BA3E6297D /* Pods_iOSMobileArchitecture.framework in Frameworks */,
+				FD61C3097496CBD2B2C6BCD5 /* Pods_iOSMobileArchitecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,11 +261,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9609993F21998CAD006B6D62 /* Build configuration list for PBXNativeTarget "iOSMobileArchitecture" */;
 			buildPhases = (
-				53B6268072464C96CE210FEC /* [CP] Check Pods Manifest.lock */,
+				5CC337CEE23BDDCD641D0A9E /* [CP] Check Pods Manifest.lock */,
 				9609992921998CAB006B6D62 /* Sources */,
 				9609992A21998CAB006B6D62 /* Frameworks */,
 				9609992B21998CAB006B6D62 /* Resources */,
-				DDCB65EB64295E7B26A36E78 /* [CP] Embed Pods Frameworks */,
+				7DDC85D0BBDE830C5481080D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,20 +324,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		53B6268072464C96CE210FEC /* [CP] Check Pods Manifest.lock */ = {
+		5CC337CEE23BDDCD641D0A9E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-iOSMobileArchitecture-checkManifestLockResult.txt",
 			);
@@ -346,12 +342,10 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DDCB65EB64295E7B26A36E78 /* [CP] Embed Pods Frameworks */ = {
+		7DDC85D0BBDE830C5481080D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOSMobileArchitecture/Pods-iOSMobileArchitecture-frameworks.sh",
@@ -360,8 +354,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -538,7 +530,7 @@
 		};
 		9609994121998CAD006B6D62 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28ED519140E31C4A1F506AB5 /* Pods-iOSMobileArchitecture.release.xcconfig */;
+			baseConfigurationReference = 239D779EEA80CD9A7D67CBDD /* Pods-iOSMobileArchitecture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

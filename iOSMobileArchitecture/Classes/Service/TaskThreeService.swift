@@ -15,9 +15,8 @@ class TaskThreeService {
     static func generateErrorByCreate() -> Observable<Int> {
         //будет ли вызван сигнал onCompleted?
         return Observable<Int>.create({ observer in
-            //все ошибки должны быть класса Problem
-            observer.onError(RxError.unknown)
-            observer.onCompleted()
+            //все ошибки должны быть класса Problem!!!
+            observer.onError(Problem())
             return Disposables.create()
         })
     }
@@ -27,10 +26,10 @@ class TaskThreeService {
         
         return Observable<Int>.create({ observer in
             //onNext
-            observer.on(.next(1))
-            observer.on(.next(2))
+            observer.onNext(1)
+            observer.onNext(2)
             //все ошибки должны быть класса Problem
-            observer.onError(RxError.unknown)
+            observer.onError(Problem())
             return Disposables.create()
         })
         

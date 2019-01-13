@@ -13,10 +13,10 @@ extension ObservableType {
     
     // Реализовать статический метод, который создает последовательность. На вход методу передается значение (обобщенный тип), которое эмитит последовательность и затем завершается.
     
-    static func generateElements() -> Observable<Int> {
+    static func generateElements<T>(element: T) -> Observable<T> {
         
-        return Observable<Int>.create({ observer in
-            observer.on(.next(3))
+        return Observable<T>.create({ observer in
+            observer.onNext(element)
             observer.onCompleted()
             return Disposables.create()
         })

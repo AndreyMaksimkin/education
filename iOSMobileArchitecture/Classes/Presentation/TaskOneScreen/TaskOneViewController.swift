@@ -23,9 +23,19 @@ class TaskOneViewController: UIViewController {
             //.subscribe(onNext: { results in
             //  print(results)
             //}, onCompleted: ...)
-            .subscribe { (e: Event<Int>) in
-                print(e)
-        }
+            .subscribe(onNext: { results in
+                print(results)
+            }, onCompleted: {
+                print("completed")
+            }, onDisposed: {
+                print("disposed")
+            })
+            
+            
+            
+//            .subscribe { (e: Event<Int>) in
+//                print(e)
+//        }
         .disposed(by: disposeBag)
     }
     

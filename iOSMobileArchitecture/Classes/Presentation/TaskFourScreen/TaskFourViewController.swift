@@ -19,10 +19,15 @@ class TaskFourViewController: UIViewController {
         TaskFourService
             .generate()
             //аналогичное замечание как и в п.1
-            .subscribe { (e: Event<Int>) in
-                print(e)
-            }
+            .subscribe(onNext: { results in
+                print(results)
+            }, onError: { error in
+                print("error")
+            }, onDisposed: {
+                print("disposed")
+            })
             .disposed(by: disposeBag)
+        
     }
     
     private let disposeBag = DisposeBag()

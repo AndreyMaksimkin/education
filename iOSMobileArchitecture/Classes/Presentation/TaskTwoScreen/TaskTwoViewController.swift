@@ -21,18 +21,27 @@ class TaskTwoViewController: UIViewController {
         taskTwoService
             .generateByCreate()
             //аналогичное замечание как и в п.1
-            .subscribe { (e: Event<[String]>) in
-                //print(e)
-            }
-            .disposed(by: disposeBag)
+        
+            .subscribe(onNext: { results in
+                print(results)
+            }, onCompleted: {
+                print("completed")
+            }, onDisposed: {
+                print("disposed")
+            })
+        .disposed(by: disposeBag)
         
         // Реализовать подписку на последовательность, используя оператор subscribe. Реализовать только те замыкания сигналов, которые могут быть вызваны. Замыкания для сигналов, которые никогда не будут прокинуты текущей последовательностью, не должны быть реализованы.
         
         taskTwoService
             .generateByOf()
-            .subscribe { (e: Event<[String]>) in
-                print(e)
-        }
+            .subscribe(onNext: { results in
+                print(results)
+            }, onCompleted: {
+                print("completed")
+            }, onDisposed: {
+                print("disposed")
+            })
         .disposed(by: disposeBag)
         
     }

@@ -21,19 +21,26 @@ class TaskThreeViewController: UIViewController {
         TaskThreeService
             .generateErrorByCreate()
             //аналогичное замечание как и в п.1
-            .subscribe { (e: Event<Int>) in
-                //print(e)
-        }
+            .subscribe(onError: { error in
+                print("error")
+            }, onDisposed: {
+                print("disposed")
+            })
+        .disposed(by: disposeBag)
         
         // Реализовать подписку на последовательность, используя оператор subscribe. Реализовать только те замыкания сигналов, которые могут быть вызваны. Замыкания для сигналов, которые никогда не будут прокинуты текущей последовательностью, не должны быть реализованы.
         
         TaskThreeService
             .generateError()
             //аналогичное замечание как и в п.1
-            .subscribe { (e: Event<Int>) in
-                print(e)
-        }
-        .disposed(by: disposeBag)
+            .subscribe(onNext: { results in
+                print(results)
+            }, onError: { error in
+                print("error")
+            }, onDisposed: {
+                print("disposed")
+            })
+            .disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()

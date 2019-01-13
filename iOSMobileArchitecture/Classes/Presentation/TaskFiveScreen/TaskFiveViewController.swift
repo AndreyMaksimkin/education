@@ -19,9 +19,11 @@ class TaskFiveViewController: UIViewController {
         TaskFiveService
             .completedByCreate()
             //аналогичное замечание как и в п.1
-            .subscribe { (e: Event<Void>) in
-                //print(e)
-            }
+            .subscribe(onCompleted: {
+                print("completed")
+            }, onDisposed: {
+                print("disposed")
+            })
             .disposed(by: disposeBag)
         
         // Реализовать подписку на последовательность, используя метод subscribe.
@@ -29,9 +31,13 @@ class TaskFiveViewController: UIViewController {
         TaskFiveService
             .completed()
             //аналогичное замечание как и в п.1
-            .subscribe { (e: Event<Int>) in
-                print(e)
-            }
+            .subscribe(onNext: { results in
+                print(results)//!!!
+            }, onCompleted: {
+                print("completed")
+            }, onDisposed: {
+                print("disposed")
+            })
             .disposed(by: disposeBag)
     }
     

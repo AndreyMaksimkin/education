@@ -17,9 +17,10 @@ class TaskTwoService {
         
         return Observable<[String]>.create({ observer in
             //onNext
-            observer.on(.next(self.arrayOne))
-            observer.on(.next(self.arrayTwo))
-            observer.on(.next(self.arrayThree))
+            observer.onNext(self.arrayOne)
+            observer.onNext(self.arrayTwo)
+            observer.onNext(self.arrayThree)
+            observer.onCompleted()
             return Disposables.create()
         })
         
