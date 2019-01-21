@@ -19,9 +19,9 @@ class TaskTwoViewController: UIViewController {
         textObservable.bind(to: rx.customTitle)
         .disposed(by: disposeBag)
     }
+    
+    private let disposeBag = DisposeBag()
 }
-
-private let disposeBag = DisposeBag()
 
 extension Reactive where Base: TaskTwoViewController {
     

@@ -17,7 +17,7 @@ class SplashViewController: UIViewController {
         Observable<Void>
             .just(Void())
             .delaySubscription(2, scheduler: MainScheduler.instance)
-            .bind(to: rx.goToTaskFiveScreen) // Для проверки заданий менять на соответствующий экран
+            .bind(to: rx.goToTaskSixScreen) // Для проверки заданий менять на соответствующий экран
             .disposed(by: disposeBag)
     }
     

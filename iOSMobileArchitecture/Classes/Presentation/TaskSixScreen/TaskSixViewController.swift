@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TaskSixViewController: UIViewController {
     @IBOutlet weak var valueLabel: UILabel!
@@ -16,5 +18,54 @@ class TaskSixViewController: UIViewController {
         super.viewDidLoad()
         
         // По тапу на кнопку valueButton (применить rx) выводить в valueLabel значение, которое эмити последовательность, созданная в TaskSixService. В случае, если последовательность завершается ошибкой, в valueLabel отображать текст "Ошибка". Нельзя использовать оператор subscribe.
+        
+        valueButton.rx.tap
+            .subscribe() { event in
+                self.btnTapped()
+            }
+            .disposed(by: disposeBag)
+        //flatMapLatest надо использовать
+        
+    }
+    
+    private func btnTapped() {
+        
+        let observable = TaskSixService.generate().catchErrorJustReturn("Ошибка")
+        observable.bind(to: rx.labelText)
+            //observable.bind(to: labelText)
+            //.bind(to: labelText)
+//            .subscribe(onNext: { results in
+//                print(results)
+//            }, onError: { error in
+//                print("error")
+//            }, onDisposed: {
+//                print("disposed")
+//            })
+
+        
+        
+        
+        
+//        observable.map { (string) -> String in
+//            if let str = string as? String {
+//                return str
+//            } else {
+//                return "Ошибка"
+//            }
+//        }
+            //.bind(to: valueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private let disposeBag = DisposeBag()
+}
+
+extension Reactive where Base: TaskSixViewController {
+    
+    var labelText: Binder<String> {
+        return Binder(base) { base, text in
+            base.valueLabel.text = text
+        }
     }
 }

@@ -19,6 +19,7 @@ class TaskOneViewController: UIViewController {
         
         let textObservable: Observable<String> = TaskOneService.generateFromTimer()
         textObservable.bind(to: timerLabel.rx.text)
+        .disposed(by: disposeBag)
 
         
     }

@@ -18,12 +18,15 @@ class TaskFourViewController: UIViewController {
         
         let numObservable: Observable<Int> = TaskFourService().generateFromTimer()
         numObservable.bind(to: rx.labelColor)
+            .disposed(by: disposeBag)
         numObservable.map({ String($0) })
             .bind(to: valueLabel.rx.text)
-        numObservable.map({ String($0) })
+            .disposed(by: disposeBag)
         
         // Последовательность, созданная в TaskFourService, эмитит число. Отображать это значение в valueLabel. Если число кратно 2, цвет текста зеленого цвета, иначе красного цвета. Нельзя использовать оператор subscribe.
     }
+    
+    private let disposeBag = DisposeBag()
 }
 
 extension Reactive where Base: TaskFourViewController {

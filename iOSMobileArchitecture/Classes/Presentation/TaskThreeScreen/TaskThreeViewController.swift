@@ -18,14 +18,16 @@ class TaskThreeViewController: UIViewController {
         
         let numObservable: Observable<Int> = TaskThreeService().generateFromTimer()
         numObservable.bind(to: rx.labelColor)
+        .disposed(by: disposeBag)
         numObservable.map({ String($0) })
         .bind(to: valueLabel.rx.text)
-        numObservable.map({ String($0) })
+        .disposed(by: disposeBag)
+        //numObservable.map({ String($0) })
         
         // Последовательность, созданная в TaskThreeService, эмитит число. Отображать это значение в valueLabel. Если число кратно 2, цвет текста зеленого цвета, иначе красного цвета. Использовать оператор map. Нельзя использовать оператор subscribe.
     }
     
-    
+    private let disposeBag = DisposeBag()
 }
 
 extension Reactive where Base: TaskThreeViewController {
