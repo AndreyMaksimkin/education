@@ -8,7 +8,7 @@
 
 import Alamofire
 
-struct TaskOneRequest: APIRequestBody {
+struct TaskOneRequest: APIRequestBody, RestAPI {
     init(parameterOne: String, parameterTwo: String) {
         self.parameterOne = parameterOne
         self.parameterTwo = parameterTwo

@@ -8,4 +8,5 @@
 
 class GlobalDefinitions {
     static let domainUrl = "https://ios.education.com"
+    
 }
