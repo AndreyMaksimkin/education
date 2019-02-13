@@ -19,11 +19,35 @@ class TaskSixViewController: UIViewController {
         
         // По тапу на кнопку valueButton (применить rx) выводить в valueLabel значение, которое эмити последовательность, созданная в TaskSixService. В случае, если последовательность завершается ошибкой, в valueLabel отображать текст "Ошибка". Нельзя использовать оператор subscribe.
         
-        valueButton.rx.tap
-            .subscribe() { event in
-                self.btnTapped()
+        
+        
+        
+        valueButton.rx.tap.flatMapLatest {
+            return TaskSixService.generate().catchErrorJustReturn("Ошибка")
             }
-            .disposed(by: disposeBag)
+        .bind(to: rx.labelText)
+        .disposed(by: disposeBag)
+        
+        
+//        valueButton.rx.tap
+//            .flatMapLatest({ _ -> Observable<Void> in
+//                return Observable<Void>
+//                    .just()
+//                    .flatMap({ (_) -> Observable<Void> in
+//                        throw NSError(domain: "", code: 0, userInfo: [:])
+//                    })
+//                    .catchError({ error -> Observable<Void> in
+//                        return Observable<Void>.just()
+//                    })
+//            })
+//            .subscribe()
+        
+        
+//        valueButton.rx.tap
+//            .subscribe() { event in
+//                self.btnTapped()
+//            }
+//            .disposed(by: disposeBag)
         //flatMapLatest надо использовать
         
     }
