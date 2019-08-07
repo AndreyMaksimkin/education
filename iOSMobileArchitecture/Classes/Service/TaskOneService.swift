@@ -37,11 +37,6 @@ class TaskOneService: RestAPI {
                     return Observable<Void>.error(Problem())
                 }
             }
-
-
-
-
-
     }
     
     
