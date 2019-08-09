@@ -17,34 +17,13 @@ class TaskOneViewModel {
     
     // Добавить метод, обращающийся к TaskOneService и возвращающий созданную в нем последовательность. На вход методу передавать параметры, полученные из сабжектов. Сабжекты должны быть включены в реактивную цепочку.
     
-    
-    
-    
-    
-//    init() {
-//        //setup()
-//    }
-    
-//    private func setup() {
-//        let param1 = UserDefaults.standard.object(forKey: parameterFirst) as? String ?? ""
-//        subjectFirst = BehaviorSubject(value: param1)
-//
-//
-//        let param2 = UserDefaults.standard.object(forKey: parameterSecond) as? String ?? ""
-//        subjectSecond = BehaviorSubject(value: param2)
-//
-//
-//
-//
-//        subjectFirst.subscribe { (event) in
-//            print("первый подписчик \(event)")
-//        }
-//
-//
-//    }
-    
-    private func someMethod(param1: String, param2: String) -> Observable<Void> {
-        return TaskOneService.sendParameters(param1, param2)
+    func someMethod() -> Observable<Void> {
+        
+        return Observable
+            .combineLatest(subjectFirst, subjectSecond)
+            .flatMapLatest { first, second -> Observable<Void> in
+                return TaskOneService.sendParameters(first, second)
+        }
     }
     
 }

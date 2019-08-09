@@ -17,6 +17,15 @@ class TaskOneViewController: UIViewController {
         case anError
     }
     
+    enum Weather {
+        case cloudy
+        case sunny
+    }
+    
+    struct Student {
+        let score: BehaviorSubject<Int>
+    }
+    
     @IBOutlet weak var parameterOneTextField: UITextField!
     @IBOutlet weak var parameterTwoTextField: UITextField!
     @IBOutlet weak var requestButton: UIButton!
@@ -27,6 +36,7 @@ class TaskOneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //combineObservable()
         //generateObservable()
         //transformObservables()
         //generateSubjects()
@@ -34,11 +44,11 @@ class TaskOneViewController: UIViewController {
         
         // По тапу на кнопку requestButton (применить rx) реализовать подписку на последовательность, созданную в TaskOneService, используя метод из TaskOneViewModel. Если последовательность завершается ошибкой, в resultLabel отображать строку "Ошибка", иначе "Успешно".
         
-//        requestButton.rx.tap
-//            .subscribe() { event in
-//                TaskOneViewModel().so
-//        }
-//        .disposed(by: disposeBag)
+        requestButton.rx.tap
+            .subscribe() { event in
+                
+        }
+        .disposed(by: disposeBag)
         
     }
     
@@ -138,38 +148,156 @@ class TaskOneViewController: UIViewController {
     
     //MARK: - Transforming Observables
     private func transformObservables() {
-        //buffer
-        let varA = Variable<Int>(0)
+        //toArray
+//        let disposeBag = DisposeBag()
+//        // 1
+//        Observable.of("A", "B", "C")
+//            // 2
+//            .toArray()
+//            .subscribe(onNext: {
+//                print($0) })
+//            .disposed(by: disposeBag)
+        //////////////////////////////////////////////////////////////////
         
-        let bufferSequence = varA.asObservable()
-            .buffer(timeSpan: 3, count: 3, scheduler: MainScheduler.instance)
-        bufferSequence.subscribe {
-            print("\(NSDate()) - \($0)")
-        }.disposed(by: disposeBag)
-        varA.value = 1
-        varA.value = 2
-        varA.value = 3
+        //Map first
+//        let disposeBag = DisposeBag()
+//        // 1
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .spellOut
+//        // 2
+//        Observable<Int>.of(123, 4, 56)
+//            // 3
+//            .map {
+//                formatter.string(for: $0) ?? ""
+//            }
+//            .subscribe(onNext: {
+//                print($0)
+//            })
+//            .disposed(by: disposeBag)
+        //////////////////////////////////////////////////////////////////
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            varA.value = 4
-            varA.value = 5
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                varA.value = 6
-            }
-        }
-        
+        //Map second
+//        let disposeBag = DisposeBag()
+//        // 1
+//        Observable.of(1, 2, 3, 4, 5, 6)
+//            // 2
+//            .enumerated()
+//            // 3
+//            .map { index, integer in
+//                index > 2 ? integer * 2 : integer
+//            }
+//            // 4
+//            .subscribe(onNext: {
+//                print($0)
+//            })
+//            .disposed(by: disposeBag)
         //////////////////////////////////////////////////////////////////
         
         //FlatMap
+//        let disposeBag = DisposeBag()
+//        // 1
+//        let laura = Student(score: BehaviorSubject(value: 80))
+//        let charlotte = Student(score: BehaviorSubject(value: 90))
+//        // 2
+//        let student = PublishSubject<Student>()
+//        // 3
+//        student
+//            .flatMap {
+//                $0.score }
+//            // 4
+//            .subscribe(onNext: {
+//                print($0)
+//            })
+//            .disposed(by: disposeBag)
+//        student.onNext(laura)
+//        laura.score.onNext(85)
+//        student.onNext(charlotte)
+//        laura.score.onNext(95)
+        
         //////////////////////////////////////////////////////////////////
         
-        //GroupBy
+        //flatMapLatest first
+//        let disposeBag = DisposeBag()
+//        let laura = Student(score: BehaviorSubject(value: 80))
+//        let charlotte = Student(score: BehaviorSubject(value: 90))
+//        let student = PublishSubject<Student>()
+//        student
+//            .flatMapLatest {
+//                $0.score }
+//            .subscribe(onNext: {
+//                print($0)
+//            })
+//            .disposed(by: disposeBag)
+//        student.onNext(laura)
+//        laura.score.onNext(85)
+//        student.onNext(charlotte)
+//        // 1
+//        laura.score.onNext(95)
+//        charlotte.score.onNext(100)
         //////////////////////////////////////////////////////////////////
         
-        //Map
+        //flatMapLatest second
+//        let disposeBag = DisposeBag()
+//        // 2
+//        let laura = Student(score: BehaviorSubject(value: 80))
+//        let charlotte = Student(score: BehaviorSubject(value: 100))
+//        let student = BehaviorSubject(value: laura)
+//
+//        let studentScore = student
+//            .flatMapLatest {
+//                $0.score.materialize() }
+//        // 2
+//        studentScore
+//            // 1
+//            .filter {
+//                guard $0.error == nil else {
+//                    print($0.error!)
+//                    return false
+//                }
+//                return true
+//            }
+//            // 2
+//            .dematerialize()
+//            .subscribe(onNext: {
+//                print($0) })
+//            .disposed(by: disposeBag)
+//        // 3
+//        laura.score.onNext(85)
+//        laura.score.onError(MyError.anError)
+//        laura.score.onNext(90)
+//        // 4
+//        student.onNext(charlotte)
+        //////////////////////////////////////////////////////////////////
+        
+        //buffer
+//        let varA = Variable<Int>(0)
+//
+//        let bufferSequence = varA.asObservable()
+//            .buffer(timeSpan: 3, count: 3, scheduler: MainScheduler.instance)
+//        bufferSequence.subscribe {
+//            print("\(NSDate()) - \($0)")
+//        }.disposed(by: disposeBag)
+//        varA.value = 1
+//        varA.value = 2
+//        varA.value = 3
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+//            varA.value = 4
+//            varA.value = 5
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+//                varA.value = 6
+//            }
+//        }
+        
         //////////////////////////////////////////////////////////////////
         
         //Scan
+        let sequence = Observable.of(1, 2, 3).scan(10) { result, element in
+            return result + element
+        }
+        sequence.subscribe {
+            print($0)
+        }.disposed(by: disposeBag)
         //////////////////////////////////////////////////////////////////
         
         //Window
@@ -319,6 +447,120 @@ class TaskOneViewController: UIViewController {
         } else {
             print(label, event)
         }
+    }
+    
+    //MARK: - Combining
+    private func combineObservable() {
+        
+        
+        
+        //CombineLatest
+//        let left = PublishSubject<String>()
+//        let right = PublishSubject<String>()
+//
+//        // 1
+//        let observable = Observable.combineLatest(left, right) {
+//            lastLeft, lastRight -> String in
+//            return "\(lastLeft) \(lastRight)"
+//        }
+//        let disposable = observable.subscribe(onNext: { value in
+//            print(value)
+//        })
+//
+//        // 2
+//        print("> Sending a value to Left")
+//        left.onNext("Hello,")
+//        print("> Sending a value to Right")
+//        right.onNext("world")
+//        print("> Sending another value to Right")
+//        right.onNext("RxSwift")
+//        print("> Sending another value to Left")
+//        left.onNext("Have a good day,")
+//
+//        left.onCompleted()
+//        right.onCompleted()
+        
+        //////////////////////////////////////////////////////////////////
+        
+        //withLatestFrom
+        // 1
+        let button = PublishSubject<Void>()
+        let textField = PublishSubject<String>()
+        // 2
+        let observable = button.withLatestFrom(textField)
+        _ = observable.subscribe(onNext: { value in
+            print(value)
+        })
+        // 3
+        textField.onNext("Par")
+        textField.onNext("Pari")
+        textField.onNext("Paris")
+        button.onNext(())
+        button.onNext(())
+        //////////////////////////////////////////////////////////////////
+        
+        //Join
+        //////////////////////////////////////////////////////////////////
+        
+        //Merge
+//        let left = PublishSubject<String>()
+//        let right = PublishSubject<String>()
+//        let source = Observable.of(left.asObservable(), right.asObservable())
+//        let observable = source.merge()
+//        _ = observable.subscribe(onNext: {
+//            print($0)
+//        })
+        //////////////////////////////////////////////////////////////////
+        
+        //StartWith
+//        let numbers = Observable.of(2, 3, 4)
+//        // 2
+//        let observable = numbers.startWith(1)
+//        _ = observable.subscribe(onNext: { value in
+//            print(value)
+//        })
+        //////////////////////////////////////////////////////////////////
+        
+        //concat
+//        let first = Observable.of(1, 2, 3)
+//        let second = Observable.of(4, 5, 6)
+//        // 2
+//        let observable = Observable.concat([first, second])
+//        observable.subscribe(onNext: {
+//            print($0)
+//        }).disposed(by: disposeBag)
+        //////////////////////////////////////////////////////////////////
+        
+        //concatMap
+//        let sequences = [
+//            "German cities": Observable.of("Berlin", "Münich", "Frankfurt"),
+//            "Spanish cities": Observable.of("Madrid", "Barcelona", "Valencia")
+//        ]
+//        // 2
+//        let observable = Observable.of("German cities", "Spanish cities")
+//            .concatMap { country in sequences[country] ?? .empty() }
+//        // 3
+//        _ = observable.subscribe(onNext: { string in
+//            print(string)
+//        })
+        //////////////////////////////////////////////////////////////////
+        
+        //Switch
+        //////////////////////////////////////////////////////////////////
+        
+        //Zip
+//        let left: Observable<Weather> = Observable.of(.sunny, .cloudy, .cloudy,
+//                                                      .sunny)
+//        let right = Observable.of("Lisbon", "Copenhagen", "London", "Madrid",
+//                                  "Vienna")
+//        let observable = Observable.zip(left, right) { weather, city in
+//            return "It's \(weather) in \(city)"
+//        }
+//        _ = observable.subscribe(onNext: {
+//            print($0)
+//        })
+        //////////////////////////////////////////////////////////////////
+        
     }
     
 }
