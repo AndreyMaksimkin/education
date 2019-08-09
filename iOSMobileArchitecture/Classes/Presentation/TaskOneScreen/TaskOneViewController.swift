@@ -33,6 +33,8 @@ class TaskOneViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    let viewModel = TaskOneViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,13 +46,27 @@ class TaskOneViewController: UIViewController {
         
         // По тапу на кнопку requestButton (применить rx) реализовать подписку на последовательность, созданную в TaskOneService, используя метод из TaskOneViewModel. Если последовательность завершается ошибкой, в resultLabel отображать строку "Ошибка", иначе "Успешно".
         
+        parameterOneTextField.rx.text
+            .bind(to: viewModel.subjectFirst)
+            .disposed(by: disposeBag)
+        
+        parameterTwoTextField.rx.text
+            .bind(to: viewModel.subjectSecond)
+            .disposed(by: disposeBag)
+        
         requestButton.rx.tap
-            .subscribe() { event in
-                
-        }
-        .disposed(by: disposeBag)
+            .flatMapLatest { [viewModel] _ -> Observable<String> in
+                return viewModel.someMethod()
+                    .map { _ in return "Успешно" }
+                    .catchErrorJustReturn("Ошибка")
+            }
+            .bind(to: resultLabel.rx.text)
+            .disposed(by: disposeBag)
         
     }
+
+private func someFunc() {
+}
     
     //MARK: - Creating observables
     private func generateObservable() {

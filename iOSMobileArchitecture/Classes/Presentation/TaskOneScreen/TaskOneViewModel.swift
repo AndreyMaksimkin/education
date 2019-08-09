@@ -12,8 +12,8 @@ class TaskOneViewModel {
     // Добавить сабжект для хранения первого параметра
     // Добавить сабжект для хранения второго параметра
     
-    private let subjectFirst = BehaviorSubject<String>(value: "param1")
-    private let subjectSecond = BehaviorSubject<String>(value: "param2")
+    let subjectFirst = BehaviorSubject<String?>(value: nil)
+    let subjectSecond = BehaviorSubject<String?>(value: nil)
     
     // Добавить метод, обращающийся к TaskOneService и возвращающий созданную в нем последовательность. На вход методу передавать параметры, полученные из сабжектов. Сабжекты должны быть включены в реактивную цепочку.
     
@@ -22,7 +22,7 @@ class TaskOneViewModel {
         return Observable
             .combineLatest(subjectFirst, subjectSecond)
             .flatMapLatest { first, second -> Observable<Void> in
-                return TaskOneService.sendParameters(first, second)
+                return TaskOneService.sendParameters(first!, second!)
         }
     }
     
